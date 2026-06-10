@@ -1,0 +1,552 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SUIT', sans-serif; /* 기본 국문/공통 서체 */
+    letter-spacing: -0.02em;
+    -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    color: #111111;
+    overflow: hidden; /* 브라우저 기본 스크롤바 숨김 */
+}
+
+/* 맥북 프로 14 스크롤 컨테이너 */
+.container {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* 세로 스냅 */
+    scroll-behavior: smooth;
+}
+
+/* 각 페이지 기본 설정 */
+.page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6vw; /* 맥북 해상도 비례 패딩 */
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    scroll-snap-align: start;
+    position: relative;
+}
+
+/* 영어 폰트 및 디도 고유 서체 스타일 지정 */
+.serif-title,
+.serif-txt,
+.big-word-spaced,
+.step-font,
+.comp-item,
+.test-preview span,
+.eng-highlight {
+    font-family: "Didot", "Bodoni 72", serif; /* 폰트 스택 반영 */
+}
+
+.thankyou {
+    font-family: 'SUIT', sans-serif; /* 폰트 스택 반영 */
+}
+
+/* 타이포그라피 세부 조정 */
+.serif-title {
+    font-size: 12rem;
+    font-weight: 400;
+    line-height: 1;
+}
+.serif-title.giant { font-size: 22rem; }
+.serif-title.small { font-size: 5rem; }
+
+.serif-txt {
+    font-style: italic;
+}
+
+/* 1. 첫 화면 */
+.section-main .brand-title {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    margin-top: 2rem;
+    text-indent: 0.4em;
+}
+.section-main .sub-txt {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
+.scroll-arrow {
+    position: absolute;
+    bottom: 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #999;
+}
+.scroll-arrow span {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+}
+
+/* 2. 드래그 화면 */
+
+.word {
+    display: flex;
+    justify-content: center;
+}
+
+.gap {
+    margin-left: 0.07em; /* 여기서 간격 조절 */
+}
+
+.wire-box {
+    border: 1px solid #cccccc;
+    padding: 4rem 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-bottom: 3rem;
+}
+.line-indicator {
+    width: 150px;
+    height: 1px;
+    background-color: #111;
+    margin-top: 2rem;
+    position: relative;
+}
+.line-indicator::after {
+    content: '';
+    position: absolute;
+    right: 0; top: -3px;
+    width: 7px; height: 7px;
+    background-color: #111;
+    border-radius: 50%;
+}
+.wire-box .caption {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+.flow-chart {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* 3, 4, 7 레이아웃 */
+.split-layout {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.text-side h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+.highlight-txt {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #000;
+}
+.desc-txt {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #666;
+}
+.footer-note {
+    display: block;
+    margin-top: 4rem;
+    font-size: 0.8rem;
+    color: #999;
+    line-height: 1.4;
+}
+
+/* 4-5. 특징이랑 분석 화면 */
+.feature-layout {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+}
+.caption-block {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.6;
+    margin-top: 2rem;
+    max-width: 280px;
+}
+.list-side {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+.box-char {
+    border: 1px solid #111;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+.list-item strong {
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.2rem;
+}
+.list-item p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* 6. 방향성 화면 */
+.section-tag {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.sub-tag {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 5rem; 
+    text-align:left;  
+}
+.big-word-spaced {
+    font-size: 3.5rem;
+    letter-spacing: 0.6em;
+    text-indent: 0.6em;
+    margin-bottom: 2.5rem;
+}
+.arrow-down {
+    font-size: 1.5rem;
+    color: #888;
+    margin-bottom: 2rem;
+}
+.main-message {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* 7. 리바이벌 과정 */
+.font-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.font-steps .tag-title { font-size: 1.2rem; font-weight: 600; }
+.step-font { line-height: 1; }
+.step-font.size-1 { font-size: 2rem; color: #aaa;}
+.step-font.size-2 { font-size: 3rem; color: #666;}
+.step-font.size-3 { font-size: 4.5rem; color: #000; font-weight: bold;}
+
+.step-list { display: flex; flex-direction: column; gap: 2rem; }
+.step-num-item { display: flex; gap: 1.5rem; }
+.step-num-item .num { font-size: 0.9rem; font-weight: 600; color: #222; margin-top: 3px;}
+.step-num-item strong { font-size: 1rem; display: block; margin-bottom: 0.4rem; }
+.step-num-item p { font-size: 0.85rem; color: #666; line-height: 1.5; }
+
+/* 8. 리바이벌 기능 */
+.comparison-box {
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 900px;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.small-serif { font-size: 1rem; }
+.mid-serif { font-size: 3rem; }
+.giant-serif { font-size: 6rem;}
+.bottom-caption {
+    max-width: 900px;
+    font-size: 1rem;
+    color: #888;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* 9. 읽기 경험 */
+
+.large img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.test-grid {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 1rem;
+}
+.test-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.col-title {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.8;
+}
+.divider-line {
+    width: 1px;
+    background-color: #ddd;
+    margin: 0 2rem;
+}
+.test-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.test-preview .small { font-size: 0.8rem; }
+.test-preview .large { font-size: 2.2rem; font-weight: bold; }
+.test-preview .dummy {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* 9. 마지막 화면 */
+
+.visual-side .serif-title.giant {
+    margin-top: 130px;   /* 아래로 내리기 */
+    margin-left: 60px;  /* 오른쪽으로 이동 */
+}
+
+.conclusion-block {
+    text-align: center;
+}
+.eng-highlight {
+    font-size: 3rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    letter-spacing: 0.8px;
+}
+.center-line {
+    width: 40px;
+    height: 1px;
+    background-color: #111;
+    margin: 0 auto 2.5rem auto;
+}
+.kor-summary {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 6rem;
+    max-width: 960px;
+}
+.thankyou {
+    font-size: 1.5rem;
+    font-weight: 360;
+    margin-bottom: 0.5rem;
+}
+.project-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: #999;
+}
+
+/* 맥북 프로 14 / 미디어 쿼리 대응 */
+@media (max-width: 1200px) {
+    body { font-size: 14px; }
+    .serif-title { font-size: 8rem; }
+    .serif-title.giant { font-size: 14rem; }
+    .split-layout, .feature-layout { gap: 2rem; padding: 0 2rem; }
+}
+
+/* 옵티컬 사이즈 css 추가 */
+/* ===== 2페이지 인터랙티브 ===== */
+
+.section-overview{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:#ffffff;
+
+    overflow:hidden;
+}
+
+.section-overview{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.section-overview .frame{
+
+    width:1100px;
+    height:700px;
+
+    position:relative;
+}
+
+/* 글자 */
+
+.section-overview .letter{
+
+    position:absolute;
+
+    left:50%;
+    top:45%;
+
+    transform:translate(-50%,-50%);
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+
+    color:#000000;
+
+    gap:-5px;
+}
+
+.section-overview .word{
+
+    text-align:center;
+
+    margin-top:-12px;
+
+    color:inherit;
+}
+
+.word span{
+
+    font-family:"Didot", serif;
+
+    display:block;
+}
+
+/* 슬라이더 */
+
+.section-overview .controls{
+
+    position:absolute;
+
+    left:50%;
+    bottom:8vh;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:4vw;
+}
+
+.section-overview .slider-group{
+    width: 220px; /* slider와 동일하게 고정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-overview .slider{
+
+    width:100%;
+}
+
+.section-overview .slider-title{
+
+    font-size: clamp(11px,0.8vw,14px);
+
+    margin-bottom:12px;
+
+    text-align:center;
+
+    letter-spacing:0.05em;
+
+    color:#000000;
+}
+
+.section-overview .slider{
+
+    position:relative;
+
+    width:220px;
+    height:24px;
+}
+
+.section-overview .line{
+
+    position:absolute;
+
+    left:0;
+
+    top:50%;
+
+    width:100%;
+    height:1px;
+
+    background:#000000;
+
+    transform:translateY(-50%);
+}
+
+.section-overview .knob{
+
+    position:absolute;
+
+    left:0;
+
+    top:50%;
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#000000;
+
+    transform:translate(-50%,-50%);
+
+    cursor:grab;
+}
+
+.knob:active{
+
+    cursor:grabbing;
+}
+
+/*이미지*/
+.step-font img{
+
+    width:600px;
+    height:auto;
+
+}
